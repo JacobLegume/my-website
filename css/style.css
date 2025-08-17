@@ -1,0 +1,81 @@
+:root {
+  /* Fonts */
+  --default-font: 'Ubuntu mono', monospace;
+  --accent-font: 'Merriweather', serif;
+
+  /* Colors */
+  --color-bg: #0d1117;
+  --color-text: #F0F8FF;
+
+  /* Other */
+  --gradient-green: radial-gradient(ellipse at top right, rgba(0,255,128,0.07), transparent 70%);
+  --gradient-teal: radial-gradient(ellipse at bottom left, rgba(0,255,255,0.07), transparent 70%);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--default-font);
+  background: var(--color-bg);
+  background-image: var(--gradient-green), var(--gradient-teal);
+  color: var(--color-text);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text); 
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#main-page h1 {
+  font-weight: 700;
+  font-size: 62px;
+}
+
+#main-page {
+  font-weight: 400;
+  font-size: 21px;
+}
+
+
+footer {
+  min-height: 60px;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer ul.socials {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
+footer ul.socials li a {
+  font-size: 24px;
+}
+
+
+#whoami .material-symbols-outlined {
+  position: relative;
+  top: 12px; /* dostosuj wartość, żeby ikona była idealnie na dole liter */
+  font-size: 24px;
+}
