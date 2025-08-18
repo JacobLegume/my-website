@@ -45,6 +45,10 @@ a {
   color: var(--color-text); 
 }
 
+footer a, header a {
+  padding: 16px;
+}
+
 main {
   flex: 1;
   display: flex;
@@ -80,7 +84,7 @@ footer ul.socials {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 80px;
+  gap: 48px;
   justify-content: center;
   align-items: center;
 }
@@ -123,7 +127,7 @@ header nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 80px;
+  gap: 48px;
   align-items: center;
   font-size: 1.5rem;
 }
