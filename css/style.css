@@ -4,17 +4,31 @@
   --accent-font: 'Merriweather', serif;
 
   /* Colors */
-  --color-bg: #0d1117;
+  --color-bg: #20262C;
+  --color-bg-dark: #0d1117;
   --color-text: #F0F8FF;
 
+  --color-accent: #BF616A;
+
   /* Other */
-  --gradient-green: radial-gradient(ellipse at top right, rgba(0,255,128,0.07), transparent 70%);
-  --gradient-teal: radial-gradient(ellipse at bottom left, rgba(0,255,255,0.07), transparent 70%);
+--gradient-green: radial-gradient(ellipse at top right, rgba(60, 50, 55, 0.25), transparent 25%);
+--gradient-teal: radial-gradient(ellipse at bottom left, rgba(50, 60, 65, 0.2), transparent 25%);
 }
+
 
 html, body {
   height: 100%;
   margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='noiseFilter'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noiseFilter)'/></svg>");
+  opacity: 0.03;  
+  pointer-events: none;
+  z-index: 0;
 }
 
 body {
@@ -40,6 +54,7 @@ main {
   text-align: center;
 }
 
+
 #main-page h1 {
   font-weight: 700;
   font-size: 62px;
@@ -52,7 +67,8 @@ main {
 
 
 footer {
-  min-height: 60px;
+  background-color: var(--color-bg-dark);
+  min-height: 40px;
   padding: 1rem 0;
   display: flex;
   justify-content: center;
@@ -73,9 +89,56 @@ footer ul.socials li a {
   font-size: 24px;
 }
 
+footer ul.socials li:hover a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
 
 #whoami .material-symbols-outlined {
   position: relative;
-  top: 12px; /* dostosuj wartość, żeby ikona była idealnie na dole liter */
+  top: 6px;
   font-size: 24px;
+}
+
+
+header {
+  background-color: var(--color-bg-dark);
+  min-height: 40px;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  margin: 0;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+header h1 span {
+  color: var(--color-accent);
+}
+
+nav .material-symbols-outlined {
+  position: relative;
+  top: 5px;
+  right: 8px;
+  font-size: 1.6rem;
+}
+
+header nav li:hover a{
+  color: var(--color-accent);
 }
