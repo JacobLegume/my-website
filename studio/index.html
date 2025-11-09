@@ -51,15 +51,90 @@
 			</ul>
 		</nav>
 	</header>
+
 	<main>
 		<section id="studio">
 			<h2>Studio</h2>
-			<div class="terminal-bar">...</div>
+			<div class="terminal-bar">
+			    <div class="terminal-line">
+			        <span class="terminal-user">warzych@studio:~$</span>
+			        <span class="terminal-command"></span>
+			    </div>
+			    <div class="terminal-line terminal-response"></div>
+			    <div class="terminal-line terminal-prompt">
+			        <span class="terminal-user">warzych@studio:~$</span>
+			        <span class="terminal-cursor">|</span>
+			    </div>
+			</div>
+			<div id="creative-grid">
+				<div class="grid-item" data-type="image" data-src="../img/gallery/bartender.png">
+					<img src="../img/gallery/bartender.png" alt="3D render of a sci-fi corridor">
+					<div class="grid-overlay">
+				        <div class="grid-overlay-content">
+				            <span class="overlay-type">Photo</span>
+				            <h4 class="overlay-title">Bartender</h4>
+				            <hr>
+				            <ul class="overlay-meta">
+				                <li><strong>Date:</strong> 06_11_2025</li>
+				                <li><strong>Body:</strong> Nikon D5100</li>
+				                <li><strong>Lens:</strong> Nikkor AF-S 18-105mm</li>
+				                <li><strong>Focal:</strong> 58mm</li>
+				                <li><strong>Aperture:</strong> f/5.0</li>
+				                <li><strong>Shutter:</strong> 1/30</li>
+				                <li><strong>ISO:</strong> 800</li>
+				            </ul>
+				        </div>
+					</div>
+				</div>
 
-			<h3>
-				Not ready yet 
-			</h3>
+				<div class="grid-item" data-type="image" data-src="../img/gallery/colors.png">
+				    <img src="../img/gallery/colors.png" alt="3D render of a sci-fi corridor">
+				    <div class="grid-overlay">
+				        <div class="grid-overlay-content">
+				            <span class="overlay-type">Photo</span>
+				            <h4 class="overlay-title">Colors</h4>
+				            <hr>
+				            <ul class="overlay-meta">
+				                <li><strong>Date:</strong> 06_11_2025</li>
+				                <li><strong>Body:</strong> Nikon D5100</li>
+				                <li><strong>Lens:</strong> Nikkor AF-S 18-105mm</li>
+				                <li><strong>Focal:</strong> 50mm</li>
+				                <li><strong>Aperture:</strong> f/5.0</li>
+				                <li><strong>Shutter:</strong> 1/100</li>
+				                <li><strong>ISO:</strong> 800</li>
+				            </ul>
+				        </div>
+				    </div>
+				</div>
+
+
+				<div class="grid-item" data-type="image" data-src="../img/gallery/walking.png">
+					<img src="../img/gallery/walking.png" alt="3D render of a sci-fi corridor">
+					<div class="grid-overlay">
+				        <div class="grid-overlay-content">
+				            <span class="overlay-type">Photo</span>
+				            <h4 class="overlay-title">Walking</h4>
+				            <hr>
+				            <ul class="overlay-meta">
+				                <li><strong>Date:</strong> 06_11_2025</li>
+				                <li><strong>Body:</strong> Nikon D5100</li>
+				                <li><strong>Lens:</strong> Nikkor AF-S 18-105mm</li>
+				                <li><strong>Focal:</strong> 38mm</li>
+				                <li><strong>Aperture:</strong> f/4.5</li>
+				                <li><strong>Shutter:</strong> 1/15</li>
+				                <li><strong>ISO:</strong> 100</li>
+				            </ul>
+				        </div>
+					</div>
+				</div>
+			</div>
+			<div id="lightbox">
+				<span class="close">&times;</span>
+				<img id="lightbox-img" class="lightbox-content" src="">
+			</div>
+		</section>
 	</main>
+
 	<footer>
 		<ul class="socials">
 			<li><a href=""><i class="fa-brands fa-square-facebook"></i></a></li>
@@ -69,5 +144,76 @@
 			<li><a href=""><i class="fa-brands fa-github"></i></a></li>
 		</ul>
 	</footer>
+
+	<script>
+		const lightbox = document.getElementById('lightbox');
+		const lightboxImg = document.getElementById('lightbox-img');
+		const closeBtn = document.querySelector('#lightbox .close');
+
+		document.querySelectorAll('.grid-item[data-type="image"]').forEach(item => {
+			item.addEventListener('click', () => {
+				lightboxImg.src = item.dataset.src;
+				lightbox.style.display = 'flex';
+				document.body.style.overflow = 'hidden';
+			});
+		});
+
+		closeBtn.addEventListener('click', () => {
+			lightbox.style.display = 'none';
+			document.body.style.overflow = '';
+		});
+
+		lightbox.addEventListener('click', (e) => {
+			if (e.target === lightbox) {
+				lightbox.style.display = 'none';
+				document.body.style.overflow = '';
+			}
+		});
+
+		document.addEventListener('DOMContentLoaded', () => {
+		    const command = "show photos";
+		    const commandEl = document.querySelector('.terminal-command');
+		    const responseEl = document.querySelector('.terminal-response');
+		    const promptLine = document.querySelector('.terminal-prompt');
+		    const cursorEl = document.querySelector('.terminal-cursor');
+		    let i = 0;
+
+		    function typeLetter() {
+		        if (i < command.length) {
+		            commandEl.textContent += command[i];
+		            i++;
+		            setTimeout(typeLetter, 80);
+		        } else {
+		            // po wpisaniu komendy
+		            setTimeout(showResponse, 250);
+		        }
+		    }
+
+		    function showResponse() {
+		        responseEl.textContent = "Displaying photos...";
+		        
+		        setTimeout(() => {
+		            promptLine.style.display = 'flex';
+		            startGalleryAnimation();
+		        }, 250);
+		    }
+
+			function startGalleryAnimation() {
+			    const items = document.querySelectorAll('#creative-grid .grid-item');
+			    let delay = 0;
+
+			    items.forEach(item => {
+			        setTimeout(() => {
+			            item.style.opacity = 1;
+			            item.style.transform = 'translateY(0)';
+			        }, delay);
+
+			        delay += 250;
+			    });
+			}
+
+		    typeLetter();
+		});
+	</script>
 </body>
 </html>
